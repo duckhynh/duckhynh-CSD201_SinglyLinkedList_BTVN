@@ -5,7 +5,7 @@ package mylinkedlist;
 // Cai next do no se mang kieu du lieu gi ?
 
 public class Node {
-    private int data;
+    public int data;
     public Node next;
 
     public Node() {

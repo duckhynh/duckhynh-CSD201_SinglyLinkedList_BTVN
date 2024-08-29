@@ -1,5 +1,7 @@
 package mylinkedlist;
 
+import java.lang.classfile.components.ClassPrinter;
+
 public class MyLinkedList {
     private Node head;
 
@@ -45,19 +47,44 @@ public class MyLinkedList {
     // 1. public int length()
     // 2. public void display()
     // 3. public void deleteFirst()
+    public void display(Node head) {
+        if(head == null){
+            System.out.println("danh sach trong!");
+        }else{
+            Node temp = head;
+            while(temp != null){
+                System.out.println(temp.data);
+                temp = temp.next;
+                if(temp != null)
+                System.out.print("->");
+            }else{
+                System.out.println();
+            }
+        } 
+    }
 
+    public static Node deleteFirst(Node heaNode){
+        if(heaNode != Null){
+            return headNode.next;
+        }
+        return headNode;
+    }
 
 
     public static void main(String[] args) {
         MyLinkedList linkedList = new MyLinkedList();
-//        linkedList.addFirst(1);
-//        linkedList.addFirst(2);
-//        linkedList.addFirst(3);
-        //3->2->1
-        linkedList.addLast(1);
-        linkedList.addLast(2);
-        linkedList.addLast(3);
-        //1->2->3
-    }
+        linkedList.addFirst(1);
+        linkedList.addFirst(2);
+        linkedList.addFirst(3);
+        // 3->2->1
+        linkedList.display(); 
 
-}
+        linkedList.addLast(4);
+        linkedList.addLast(5);
+        // 3->2->1->4->5
+        linkedList.display(); 
+
+        linkedList.deleteFirst();
+      
+        linkedList.display(); 
+    }
