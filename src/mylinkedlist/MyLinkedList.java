@@ -47,44 +47,49 @@ public class MyLinkedList {
     // 1. public int length()
     // 2. public void display()
     // 3. public void deleteFirst()
-    public void display(Node head) {
-        if(head == null){
-            System.out.println("danh sach trong!");
-        }else{
-            Node temp = head;
-            while(temp != null){
-                System.out.println(temp.data);
-                temp = temp.next;
-                if(temp != null)
-                System.out.print("->");
-            }else{
-                System.out.println();
-            }
-        } 
+    public int lenght(){
+        if (head ==null)
+            return 0;
+        Node temp = head;
+         int count = 0;
+        while (temp != null){
+            count++;
+            temp = temp.next;
     }
-
-    public static Node deleteFirst(Node heaNode){
-        if(heaNode != Null){
-            return headNode.next;
+    return count;
+ }
+    public void display(){
+        if (head == null)
+            return ;
+        Node temp = head;
+        while(temp != null){
+            System.out.println(temp.data + " -> ");
+            temp = temp.next;
         }
-        return headNode;
+        System.out.println("\n");
     }
 
+    public void deleteFirst(){
+       if (head == null)
+            return;
+       head = head.next;
+    }
 
+    
     public static void main(String[] args) {
         MyLinkedList linkedList = new MyLinkedList();
+        System.out.println("addFirst");
         linkedList.addFirst(1);
         linkedList.addFirst(2);
         linkedList.addFirst(3);
+        linkedList.display();
         // 3->2->1
-        linkedList.display(); 
 
-        linkedList.addLast(4);
-        linkedList.addLast(5);
-        // 3->2->1->4->5
-        linkedList.display(); 
-
-        linkedList.deleteFirst();
-      
-        linkedList.display(); 
-    }
+        System.out.println("addLast");
+        linkedList.addLast(1);
+        linkedList.addLast(2);
+        linkedList.addLast(3);
+        linkedList.display();
+        System.out.println("Do dai: ");
+        System.out.println(linkedList.lenght());
+        // 1->2->3
