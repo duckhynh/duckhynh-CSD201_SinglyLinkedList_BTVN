@@ -67,8 +67,8 @@ public class MyLinkedList {
 
     public void deleteFirst(){
        if (head == null)
-            return;
        head = head.next;
+       return;
     }
 
     
@@ -79,16 +79,15 @@ public class MyLinkedList {
         linkedList.addFirst(2);
         linkedList.addFirst(3);
         linkedList.display();
-        // 3->2->1
 
         System.out.println("addLast");
         linkedList.addLast(1);
         linkedList.addLast(2);
         linkedList.addLast(3);
         linkedList.display();
+
         System.out.println("Lenght : ");
         System.out.println(linkedList.lenght());
-        // 1->2->3
 
       
     }
