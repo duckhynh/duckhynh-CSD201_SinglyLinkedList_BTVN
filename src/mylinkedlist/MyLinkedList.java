@@ -19,9 +19,6 @@ public class MyLinkedList {
         while(temp.next != null){
             temp = temp.next;
         }
-        // Sau câu lenh nay, anh da tim duoc node cuoi cung, va duoc gan cho
-        // temp
-        // Nhiem vu cuôi cung: Naruto: The Last => Boruto: Naruto Next Generation
         temp.next = newNode;
 
     }
