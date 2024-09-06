@@ -11,26 +11,29 @@ public class MyLinkedList {
 
     public void addLast(int data){
         Node newNode = new Node(data);
-        if (head == null){
+        if(head == null){
             head = newNode;
             return;
         }
-
         Node temp = head;
         while(temp.next != null){
             temp = temp.next;
         }
+        // Sau câu lenh nay, anh da tim duoc node cuoi cung, va duoc gan cho
+        // temp
+        // Nhiem vu cuôi cung: Naruto: The Last => Boruto: Naruto Next Generation
         temp.next = newNode;
+
     }
-//0
-  public void add(int data, int index){
+// 0
+    public void add(int data, int index){
         Node newNode = new Node(data);
         if(index == 0){
             addFirst(data);
             return;
-        }else{
+        } else{
             Node temp = head;
-            for(int i = 0; i < index - 1; i++){
+            for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
             Node nextNode = temp.next;
@@ -38,57 +41,104 @@ public class MyLinkedList {
             newNode.next = nextNode;
         }
     }
-    //BTVN: viet code cho cac ham sau
-    //1. public int lenght()
-    //2. public void display()
-    //3. public void deleteFirst()
-
-    public int lenght(){
-        if (head ==null)
-            return 0;
-        Node temp = head;
-         int count = 0;
-        while (temp != null){
-            count++;
-            temp = temp.next;
+    // BTVN: Viet code cho cac ham sau
+    // 1. public int length()
+    // 2. public void display()
+    // 3. public void deleteFirst()
+    public int length(){
+        int count = 0;
+        if(head != null){
+            Node temp = head;
+            while(temp != null){
+                count ++;
+                temp = temp.next;
+            }
+        }
+        return count;
     }
-    return count;
- }
+    
     public void display(){
-        if (head == null)
-            return ;
+        if(head != null){
+            Node temp = head;
+            while(temp != null){
+                System.out.print(temp.getData() + " --> ");
+                temp = temp.next;
+            }
+        }
+        System.out.println("null");
+    }
+    
+    public void deleteFirst(){
+        if(head == null) 
+            return;
+        head = head.next;
+    }
+    public void deleteLast(){
+        if(head == null)
+            return;
+        if(head.next == null){
+            deleteFirst();
+        }
+        Node temp = head; 
+        Node previous = null; 
+        while(temp.next != null){ 
+            previous = temp; 
+            temp = temp.next; 
+        }
+        previous.next = null; 
+    }
+    public void delete(int index){
+        if(index == 0){
+            deleteFirst();
+            return;
+        } else if(index == length()-1){
+            deleteLast();
+            return; 
+        } else{
+            Node preNodeDelete = head; 
+            for (int i = 1; i < index; i++) {
+                preNodeDelete = preNodeDelete.next;
+            }
+            preNodeDelete.next = preNodeDelete.next.next;
+            // BTVN1: Viết hàm delete theo while. Hint: dùng count++;
+        }
+    }
+    public boolean search(int data){
+        if(head == null)
+            return false;
         Node temp = head;
         while(temp != null){
-            System.out.println(temp.data + " -> ");
+            if(temp.getData() == data)
+                return true;
+        }
+        return false;
+    }
+
+    public Node searchAtPosition(int index){
+        if(index < 0 || index >= length())
+            return null;
+        Node temp = head;
+        for (int i = 0; i <= index; i++) {
             temp = temp.next;
         }
-        System.out.println("\n");
+        return temp;
     }
 
-    public void deleteFirst(){
-       if (head == null)
-       head = head.next;
-       return;
-    }
-
-    
+// BTVN2: Viết cho anh hàm sort()
+// BTVN3: 
     public static void main(String[] args) {
-        MyLinkedList linkedList = new MyLinkedList();
-        System.out.println("addFirst");
-        linkedList.addFirst(1);
-        linkedList.addFirst(2);
-        linkedList.addFirst(3);
+       MyLinkedList linkedList = new MyLinkedList();
+       linkedList.addFirst(1);
+       linkedList.addFirst(2);
+       linkedList.addFirst(3);
+        //
+       linkedList.addLast(1);
+       linkedList.addLast(2);
+       linkedList.addLast(3);
+        //3 - 2 - 1 - 1->2->3
+        linkedList.delete(4);
         linkedList.display();
-
-        System.out.println("addLast");
-        linkedList.addLast(1);
-        linkedList.addLast(2);
-        linkedList.addLast(3);
-        linkedList.display();
-
-        System.out.println("Lenght : ");
-        System.out.println(linkedList.lenght());
-
-      
+        
     }
+
 }
