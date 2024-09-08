@@ -115,6 +115,8 @@ public class MyLinkedList {
                     preNodeDelete = preNodeDelete.next;
                     count++;
                 }
+                Node cur = preNodeDelete.next;
+                preNodeDelete.next = cur.next;
                 if(preNodeDelete.next == null){
                     return;
                 }
@@ -160,17 +162,16 @@ public class MyLinkedList {
 // BTVN3: 
     public static void main(String[] args) {
        MyLinkedList linkedList = new MyLinkedList();
-       linkedList.addFirst(1);
-       linkedList.addFirst(2);
-       linkedList.addFirst(3);
-        //
-       linkedList.addLast(1);
-       linkedList.addLast(2);
-       linkedList.addLast(3);
-        //3 - 2 - 1 - 1->2->3
-       // linkedList.delete(4);
-       // linkedList.display();
-        
-    }
+      linkedList.addFirst(1);
+      linkedList.addFirst(2);
+      linkedList.addFirst(3);
+       //
+      linkedList.addLast(1);
+      linkedList.addLast(2);
+      linkedList.addLast(3);
+       //3 - 2 - 1 - 1->2->3
+      linkedList.delete(4);
+      linkedList.display();
 
+    }
 }
