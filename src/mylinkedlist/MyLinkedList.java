@@ -115,12 +115,7 @@ public class MyLinkedList {
                     preNodeDelete = preNodeDelete.next;
                     count++;
                 }
-                Node cur = preNodeDelete.next;
-                preNodeDelete.next = cur.next;
-                if(preNodeDelete.next == null){
-                    return;
-                }
-
+                preNodeDelete.next = preNodeDelete.next.next;
             }
 
         }
