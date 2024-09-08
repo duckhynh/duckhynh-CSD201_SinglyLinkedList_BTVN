@@ -84,22 +84,44 @@ public class MyLinkedList {
         }
         previous.next = null; 
     }
-    public void delete(int index){
-        if(index == 0){
-            deleteFirst();
-            return;
-        } else if(index == length()-1){
-            deleteLast();
-            return; 
-        } else{
-            Node preNodeDelete = head; 
-            for (int i = 1; i < index; i++) {
-                preNodeDelete = preNodeDelete.next;
+    //public void delete(int index){
+    //    if(index == 0){
+    //        deleteFirst();
+    //        return;
+    //    } else if(index == length()-1){
+    //        deleteLast();
+    //        return; 
+    //    } else{
+    //        Node preNodeDelete = head; 
+    //        for (int i = 1; i < index; i++) {
+    //            preNodeDelete = preNodeDelete.next;
+    //        }
+    //        preNodeDelete.next = preNodeDelete.next.next;
+    //        // BTVN1: Viết hàm delete theo while. Hint: dùng count++;
+    //    }
+    //}
+        public void delete(int index){
+            if(index<0) return;
+            if(index == 0){
+                deleteFirst();
+                return;
             }
-            preNodeDelete.next = preNodeDelete.next.next;
-            // BTVN1: Viết hàm delete theo while. Hint: dùng count++;
+            else{
+                Node preNodeDelete = head;
+                int count = 0;
+                while(preNodeDelete.next != null){
+                    if(index -1 == count)
+                    break;
+                    preNodeDelete = preNodeDelete.next;
+                    count++;
+                }
+                if(preNodeDelete.next == null){
+                    return;
+                }
+
+            }
+
         }
-    }
     public boolean search(int data){
         if(head == null)
             return false;
@@ -146,8 +168,8 @@ public class MyLinkedList {
        linkedList.addLast(2);
        linkedList.addLast(3);
         //3 - 2 - 1 - 1->2->3
-        linkedList.delete(4);
-        linkedList.display();
+       // linkedList.delete(4);
+       // linkedList.display();
         
     }
 
